@@ -1,5 +1,4 @@
 import AddIcon from "@/app/components/icons/add";
-import CrossIcon from "@/app/components/icons/add";
 import { ReactNode } from "react";
 
 type BotaoProps = {
