@@ -1,5 +1,5 @@
 // components/icons/Cruz.tsx
-interface cruzIconProps {
+interface AddIconProps {
   size?: number;
   thickness?: number;
   variant?: "dark" | "light";
@@ -11,12 +11,12 @@ const COLORS = {
   light: "#FFFFFF", 
 };
 
-export default function CruzIcon({
+export default function AddIcon({
   size = 8.17,
   thickness = 1,
   variant = "dark",
   className,
-}: cruzIconProps) {
+}: AddIconProps) {
   const color = COLORS[variant];
 
   return (

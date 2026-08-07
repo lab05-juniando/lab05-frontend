@@ -1,4 +1,5 @@
-import CruzIcon from "@/app/components/icons/cruz";
+import AddIcon from "@/app/components/icons/add";
+import CrossIcon from "@/app/components/icons/add";
 import { ReactNode } from "react";
 
 type BotaoProps = {
@@ -39,7 +40,7 @@ export const Button = ({
             className={`${classes.base} ${size === "large" ? classes.large : ""} ${colors[colorsParam]} ${weightFont[weight]}`}
             onClick={onClick}
         >
-            <CruzIcon
+            <AddIcon
                 variant={colorsParam === "dark" ? "light" : "dark"}
                 size={size === "large" ? 12 : 8}
             />
