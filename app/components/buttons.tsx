@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import AddIcon from "@/app/components/icons/add"; // ajuste o caminho conforme seu projeto
+import AddIcon from "@/app/components/icons/add"; 
 
 type ButtonProps = {
   children: React.ReactNode;
