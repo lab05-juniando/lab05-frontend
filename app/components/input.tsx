@@ -15,7 +15,7 @@ export default function Input({ text, rightLabel, type, ...props }: InputProps) 
         type === "email" ? (
             <Mail size={20} className="text-slate-400" />
         ) : type === "password" ? (
-            <LockKeyhole size={20} className="text-slate-400" />
+            <LockKeyhole size={20}  className="text-slate-400" />
         ) : null;
 
     const inputType = type === "password" ? (showPassword ? "text" : "password") : type;
