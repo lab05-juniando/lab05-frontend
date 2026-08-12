@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '@/app/components/input';
 import { Button } from '@/app/components/buttons';
-
+import Low from '@/app/components/low';
 
 export default function LoginPage() {
   return (
@@ -19,6 +19,8 @@ export default function LoginPage() {
       <Button colorsParam="light" weight="600" iconType="arrow" iconPosition="right" size="big">
         Entrar
       </Button>
+
+        <Low></Low>
     </div>
   );
 }
