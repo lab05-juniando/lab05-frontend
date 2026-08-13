@@ -16,7 +16,7 @@ export default function LoginPage() {
           type="password"
           placeholder="••••••••"
           rightLabel={
-            <a href="/esqueci-senha" className="text-blue-400 hover:underline">
+            <a href="/esqueci-senha" className="text-with-400 hover:underline">
               Esqueceu a senha?
             </a>
           }
