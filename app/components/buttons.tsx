@@ -5,7 +5,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 
 type ButtonProps = {
     children: React.ReactNode;
-    size?: "large" | "big" | "medium" | "large";
+    size?: "large" | "big" | "medium" | "compact";
     colorsParam: "dark" | "medium" | "light";
     weight: "400" | "500" | "600";
     onClick?: () => void;
@@ -26,9 +26,10 @@ export const Button = ({
 }: ButtonProps) => {
     const classes = {
         base: "flex flex-row items-center w-fit h-fit text-sm rounded-md py-3.5 px-6 gap-4 cursor-pointer font-inter",
-        medium: "gap-4 py-3 px-7 text-base",
+        medium: "py-3 px-7 text-base",
         large: "rounded-xl py-4.5 px-8 gap-5 text-base",
-        big: " w-full justify-center rounded-2xl py-3.5 px-8",
+        big: " w-full  rounded-2xl py-3.5 px-8",
+        compact: "w-full justify-center rounded-xl py-1 px-2",
     };
 
     const colors = {

@@ -19,11 +19,11 @@ export default function Low() {
 
             <div className="flex flex-row gap-4 mt-4">
 
-                <Button colorsParam="dark" weight="600" size="large" iconType="google" borderColor="white" iconPosition="left">
+                <Button colorsParam="dark" weight="600" size="compact" iconType="google" borderColor="white" iconPosition="left">
                     Google
                 </Button>
 
-                <Button colorsParam="dark" weight="600" size="large" iconType="github" borderColor="white" iconPosition="left">
+                <Button colorsParam="dark" weight="600" size="compact" iconType="github" borderColor="white" iconPosition="left">
                     GitHub
                 </Button>
             </div>
