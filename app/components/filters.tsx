@@ -1,124 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import Select from "./ui/select";
 
-export type Transaction = {
-  id: number;
-  description: string;
-  category: string;
-  type: "entrada" | "saida";
-  amount: number;
-  date: string;
-};
+import { typesFilterTransaction } from "./static/typesFilterTransactions";
+import { Button } from "./buttons";
+import { ListFilter } from "lucide-react";
 
-type TransactionFilterProps = {
-  transactions: Transaction[];
-  onFilter: (transactions: Transaction[]) => void;
-};
-
-export default function TransactionFilter({
-  transactions,
-  onFilter,
-}: TransactionFilterProps) {
-  const [category, setCategory] = useState("todas");
-  const [type, setType] = useState("todos");
-  const [period, setPeriod] = useState("30");
-
-  function handleFilter() {
-    const filtered = transactions.filter((transaction) => {
-      const matchesCategory =
-        category === "todas" || transaction.category === category;
-
-      const matchesType =
-        type === "todos" || transaction.type === type;
-
-      const today = new Date();
-      const transactionDate = new Date(transaction.date);
-
-      const daysAgo = new Date();
-      daysAgo.setDate(today.getDate() - Number(period));
-
-      const matchesPeriod = transactionDate >= daysAgo;
-
-      return (
-        matchesCategory &&
-        matchesType &&
-        matchesPeriod
-      );
-    });
-
-    onFilter(filtered);
-  }
-
+export default function TransactionFilter() {
   return (
-    <div className="w-full rounded-2xl border border-[#293141] bg-[#10192B] p-5 text-[#BDC8D1] shadow-sm">
+    <div className="p-6 mx-6 my-8 rounded-lg border border-[#293142] bg-[#11192C] text-[#BDC8D1] shadow-sm">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Select
+          label="período"
+          valueSelected={typesFilterTransaction.periods[0]}
+          setSelection={() => console.log("setPeriod")}
+          values={typesFilterTransaction.periods}
+        />
+        <Select
+          label="tipo"
+          valueSelected={typesFilterTransaction.periods[0]}
+          setSelection={() => console.log("setPeriod")}
+          values={typesFilterTransaction.types}
+        />
+        <Select
+          label="categoria"
+          valueSelected={typesFilterTransaction.periods[0]}
+          setSelection={() => console.log("setPeriod")}
+          values={typesFilterTransaction.categories}
+        />
 
-        {/* ========= PERÍODO ========= */}
-
-        <div>
-          <label className="font-mono mb-2 block text-sm font-medium">
-            PERÍODO
-          </label>
-
-          <select
-            value={period}
-            onChange={(e) => setPeriod(e.target.value)}
-            className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+        <div className="flex items-end w-full">
+          <Button
+            className="bg-[#222A3D] border-[#3E484F] border"
+            colorsParam="medium"
+            weight="400"
           >
-            <option value="7">Últimos 7 Dias</option>
-            <option value="15">Últimos 15 Dias</option>
-            <option value="30">Últimos 30 Dias</option>
-            <option value="passado">Mês passado</option>
-          </select>
+            <ListFilter size={18} /> Filtrar filtros
+          </Button>
         </div>
-
-        {/* ============= TIPO ====================== */}
-
-        <div>
-          <label className="font-mono mb-2 block text-sm font-medium">
-            TIPO
-          </label>
-
-          <select
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-          >
-            <option value="todos">Todos os tipos</option>
-            <option value="entrada">Entradas</option>
-            <option value="saida">Saídas</option>
-          </select>
-        </div>
-
-        {/*================ CATEGORIA =============== */}
-
-        <div>
-          <label className="font-mono mb-2 block text-sm font-medium">
-            CATEGORIA
-          </label>
-
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-          >
-            <option value="todas">Todas as categorias</option>
-          </select>
-        </div>
-
-        {/* ============= FILTRO ================ */}
-
-        <div className="flex items-end">
-          <button
-            type="button"
-            onClick={handleFilter}
-            className="h-10 w-full rounded-xl bg-slate-800 px-5 text-sm font-medium text-white transition hover:bg-slate-700 md:w-auto"
-          >
-            Filtrar transações
-          </button>
-        </div>
-
       </div>
     </div>
   );
