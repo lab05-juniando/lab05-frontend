@@ -120,7 +120,7 @@ export default function Produtos() {
               <span>
                 Itens comprados são registrados como
                 <br />
-                'Saída'
+                &apos;Saída&apos;
               </span>
             </div>
 
