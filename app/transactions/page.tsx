@@ -1,3 +1,8 @@
+
+import Filters from '../components/filters';
+
 export default function TransactionsPage() {
-  return <h1>Transações</h1>;
+  return ( <Filters />
+   );
+
 }
