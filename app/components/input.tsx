@@ -1,22 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, LockKeyhole, Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     text?: string;
     rightLabel?: React.ReactNode;
+    icon?: React.ReactNode;
 }
 
-export default function Input({ text, rightLabel, type, ...props }: InputProps) {
+export default function Input({ text, rightLabel, icon, type, ...props }: InputProps) {
     const [showPassword, setShowPassword] = useState(false);
-
-    const leftIcon =
-        type === "email" ? (
-            <Mail size={20} className="text-slate-400" />
-        ) : type === "password" ? (
-            <LockKeyhole size={20}  className="text-slate-400" />
-        ) : null;
 
     const inputType = type === "password" ? (showPassword ? "text" : "password") : type;
 
@@ -34,7 +28,7 @@ export default function Input({ text, rightLabel, type, ...props }: InputProps) 
             )}
 
             <div className="flex items-center gap-2 w-full rounded-xl bg-white px-4 py-3 focus-within:ring-2 focus-within:ring-blue-400 transition-all">
-                {leftIcon}
+                {icon}
 
                 <input
                     type={inputType}
