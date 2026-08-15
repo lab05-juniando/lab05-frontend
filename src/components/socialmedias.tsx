@@ -1,6 +1,6 @@
 import { Button } from "./buttons";
 
-export default function Low() {
+export default function SocialMedias() {
   return (
     <div>
       <div className="flex items-center gap-4">
@@ -13,23 +13,23 @@ export default function Low() {
 
       <div className="flex flex-row gap-4 mt-4">
         <Button
-          colorsParam="dark"
           weight="600"
           size="compact"
           iconType="google"
           borderColor="white"
           iconPosition="left"
+          className="transparent"
         >
           Google
         </Button>
 
         <Button
-          colorsParam="dark"
           weight="600"
           size="compact"
           iconType="github"
           borderColor="white"
           iconPosition="left"
+          className="transparent"
         >
           GitHub
         </Button>

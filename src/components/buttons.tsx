@@ -1,12 +1,12 @@
 import { ArrowRight } from "lucide-react";
-import AddIcon from "@/app/components/icons/add";
+import AddIcon from "@/src/components/icons/add";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { HtmlHTMLAttributes } from "react";
 
 type ButtonProps = {
   children: React.ReactNode;
   size?: "large" | "big" | "medium" | "compact";
-  colorsParam: "dark" | "medium" | "light";
+  colorsParam?: "dark" | "medium" | "light";
   weight: "400" | "500" | "600";
   onClick?: () => void;
   iconType?: "add" | "arrow" | "google" | "github" | "none";
@@ -68,7 +68,7 @@ export const Button = ({
 
   return (
     <button
-      className={`${classes.base} ${size ? classes[size] : ""} ${colors[colorsParam]} ${weightFont[weight]} ${borderColor === "white" ? borderColors.white : ""} ${className || ""}`}
+      className={`${classes.base} ${size ? classes[size] : ""} ${colorsParam && colors[colorsParam]} ${weightFont[weight]} ${borderColor === "white" ? borderColors.white : ""} ${className || ""}`}
       onClick={onClick}
       {...restProps}
     >
