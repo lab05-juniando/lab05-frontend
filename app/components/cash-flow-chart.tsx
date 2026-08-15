@@ -81,7 +81,18 @@ function Legend() {
   );
 }
 
-function ChartTooltip({ active, payload, label }: any) {
+type ChartTooltipProps = {
+  active?: boolean;
+  payload?: Array<{
+    payload?: {
+      _entradaOriginal?: number;
+      _saidaOriginal?: number;
+    };
+  }>;
+  label?: string | number;
+};
+
+function ChartTooltip({ active, payload, label }: ChartTooltipProps) {
   if (!active || !payload || !payload.length) return null;
   const row = payload[0]?.payload;
   return (
