@@ -1,3 +1,4 @@
+import CashFlowChart from "../components/cash-flow-chart";
 import RecentTransactions from "../components/RecentTransactions";
 import SummaryCard from "../components/summary-card";
 
@@ -39,7 +40,7 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
 
         <section>
-         
+          <CashFlowChart/>
         </section>
 
         <aside>
