@@ -3,11 +3,11 @@
 import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/src/components/buttons";
 
-type ConfirmacaoProps = {
-    onVoltar: () => void;
+type ConfirmationProps = {
+    onBack: () => void;
 };
 
-export function Confirmation ({ onVoltar }: ConfirmacaoProps) {
+export function Confirmation({ onBack }: ConfirmationProps) {
     return (
         <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-lg bg-white">
             <div className="flex flex-col items-center px-6 py-10 gap-4">
@@ -30,7 +30,7 @@ export function Confirmation ({ onVoltar }: ConfirmacaoProps) {
                         weight="600"
                         iconType="arrow"
                         size="compact"
-                        onClick={onVoltar}
+                        onClick={onBack}
                     >
                         Voltar
                     </Button>

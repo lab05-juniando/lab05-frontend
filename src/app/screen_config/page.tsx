@@ -5,50 +5,55 @@ import Image from "next/image";
 import { Camera, Mail, Smartphone, Cake } from "lucide-react";
 import Input from "@/src/components/input";
 import { Button } from "@/src/components/buttons";
-import { Confirmation } from "./confirmação";
-import { validarConfig, temErro, type ErrosConfig } from "./validar";
+import { Confirmation } from "@/src/app/screen_config/confirmation";
+import { validateConfig, hasError, type ConfigErrors } from "./validate";
 
-const ERROS_VAZIOS: ErrosConfig = { email: "", phone: "", birthDate: "" };
+const EMPTY_ERRORS: ConfigErrors = { email: "", phone: "", birthDate: "" };
 
 export default function CanvasConfig() {
   const [email, setEmail] = useState("odeioosZenin@gmail.com");
   const [phone, setPhone] = useState("+55 83 94002-8922");
   const [birthDate, setBirthDate] = useState("20/02/2002");
 
-  const [erros, setErros] = useState<ErrosConfig>(ERROS_VAZIOS);
-  const [salvando, setSalvando] = useState(false);
-  const [tela, setTela] = useState<"form" | "sucesso">("form");
+  const [errors, setErrors] = useState<ConfigErrors>(EMPTY_ERRORS);
+  const [saving, setSaving] = useState(false);
+  const [screen, setScreen] = useState<"form" | "success">("form");
 
-  function validarCampo(campo: keyof ErrosConfig, valor: string) {
-    const errosAtualizados = validarConfig(
-      campo === "email" ? valor : email,
-      campo === "phone" ? valor : phone,
-      campo === "birthDate" ? valor : birthDate
+
+
+  //conferir dados//
+  function validateField(field: keyof ConfigErrors, value: string) {
+    const updatedErrors = validateConfig(
+      field === "email" ? value : email,
+      field === "phone" ? value : phone,
+      field === "birthDate" ? value : birthDate
     );
 
-    setErros((atual: ErrosConfig) => ({ ...atual, [campo]: errosAtualizados[campo] }));
+    setErrors((current: ConfigErrors) => ({ ...current, [field]: updatedErrors[field] }));
   }
 
+
+  //validando dados//
   function handleSubmit() {
-    if (salvando) return;
+    if (saving) return;
 
-    const errosAtualizados = validarConfig(email, phone, birthDate);
-    setErros(errosAtualizados);
+    const updatedErrors = validateConfig(email, phone, birthDate);
+    setErrors(updatedErrors);
 
-    if (temErro(errosAtualizados)) return;
+    if (hasError(updatedErrors)) return;
 
-    setSalvando(true);
+    setSaving(true);
 
     setTimeout(() => {
-      setSalvando(false);
-      setTela("sucesso");
+      setSaving(false);
+      setScreen("success");
     }, 800);
   }
 
   return (
     <div className="relative w-full max-w-sm mx-auto pt-50">
-      {tela === "sucesso" ? (
-        <Confirmation onVoltar={() => setTela("form")} />
+      {screen === "success" ? (
+        <Confirmation onBack={() => setScreen("form")} />
       ) : (
         <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-lg bg-white">
           <div className="h-24 bg-blue-50" />
@@ -82,11 +87,11 @@ export default function CanvasConfig() {
                 icon={<Mail size={18} className="text-slate-400 shrink-0" />}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && validarCampo("email", email)}
-                onBlur={() => validarCampo("email", email)}
+                onKeyDown={(e) => e.key === "Enter" && validateField("email", email)}
+                onBlur={() => validateField("email", email)}
               />
-              {erros.email && (
-                <span className="text-xs text-red-500 pl-1">{erros.email}</span>
+              {errors.email && (
+                <span className="text-xs text-red-500 pl-1">{errors.email}</span>
               )}
             </div>
 
@@ -97,11 +102,11 @@ export default function CanvasConfig() {
                 icon={<Smartphone size={18} className="text-slate-400 shrink-0" />}
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && validarCampo("phone", phone)}
-                onBlur={() => validarCampo("phone", phone)}
+                onKeyDown={(e) => e.key === "Enter" && validateField("phone", phone)}
+                onBlur={() => validateField("phone", phone)}
               />
-              {erros.phone && (
-                <span className="text-xs text-red-500 pl-1">{erros.phone}</span>
+              {errors.phone && (
+                <span className="text-xs text-red-500 pl-1">{errors.phone}</span>
               )}
             </div>
 
@@ -112,11 +117,11 @@ export default function CanvasConfig() {
                 icon={<Cake size={18} className="text-slate-400 shrink-0" />}
                 value={birthDate}
                 onChange={(e) => setBirthDate(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && validarCampo("birthDate", birthDate)}
-                onBlur={() => validarCampo("birthDate", birthDate)}
+                onKeyDown={(e) => e.key === "Enter" && validateField("birthDate", birthDate)}
+                onBlur={() => validateField("birthDate", birthDate)}
               />
-              {erros.birthDate && (
-                <span className="text-xs text-red-500 pl-1">{erros.birthDate}</span>
+              {errors.birthDate && (
+                <span className="text-xs text-red-500 pl-1">{errors.birthDate}</span>
               )}
             </div>
 
@@ -127,7 +132,7 @@ export default function CanvasConfig() {
               size="compact"
               onClick={handleSubmit}
             >
-              {salvando ? "Salvando..." : "Alterar Configurações"}
+              {saving ? "Salvando..." : "Alterar Configurações"}
             </Button>
           </div>
         </div>
