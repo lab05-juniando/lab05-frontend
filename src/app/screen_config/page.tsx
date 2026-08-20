@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Camera, Mail, Smartphone, Cake } from "lucide-react";
 import AddIcon from "@/src/components/icons/add";
 import Input from "@/src/components/input";
+import { Button } from "@/src/components/buttons"
 
 export default function GearConfig() {
   const [email, setEmail] = useState("odeioosZenin@gmail.com");
@@ -62,13 +63,16 @@ export default function GearConfig() {
             onChange={(e) => setBirthDate(e.target.value)}
           />
 
-          <button
-            type="button"
-            className="flex items-center gap-2 mt-2 text-sm text-blue-600 hover:underline"
+
+          <Button
+            colorsParam="light"
+            weight="600"
+            iconType="arrow"
+            size="compact"
           >
-            <AddIcon variant="dark" size={12} />
-            Adicionar informação
-          </button>
+            Alterar Configurações
+          </Button>
+
         </div>
       </div>
     </div>
