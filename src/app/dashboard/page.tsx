@@ -1,6 +1,6 @@
-import CashFlowChart from "../components/cash-flow-chart";
-import RecentTransactions from "../components/RecentTransactions";
-import SummaryCard from "../components/summary-card";
+import CashFlowChart from "../../components/cash-flow-chart";
+import RecentTransactions from "../../components/RecentTransactions";
+import SummaryCard from "../../components/summary-card";
 
 export default function DashboardPage() {
   return (

@@ -1663,11 +1663,6 @@ form-data@^4.0.6:
     hasown "^2.0.4"
     mime-types "^2.1.35"
 
-fortawesome@^0.0.1-security:
-  version "0.0.1-security"
-  resolved "https://registry.npmjs.org/fortawesome/-/fortawesome-0.0.1-security.tgz"
-  integrity sha512-o/pwn9ZSnveFLYP0d5IejSwz0rpGMDQsBaYVvR8WXSvnxILIwh7IUJK0P90QMF4cnIyouVF2BGrz0LEVSyzimA==
-
 function-bind@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz"
