@@ -7,8 +7,8 @@ import { LayoutDashboardIcon, ShoppingCartIcon, ReceiptIcon } from 'lucide-react
 
 const nav_items = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboardIcon},
-  { label: "Transactions", href: "/transactions", icon: ReceiptIcon},
-  { label: "Shopping List", href: "/shopping-list", icon: ShoppingCartIcon},
+  { label: "Transactions", href: "/dashboard/transactions", icon: ReceiptIcon},
+  { label: "Shopping List", href: "/dashboard/shopping-list", icon: ShoppingCartIcon},
 ];
 
 export default function Sidebar() {
