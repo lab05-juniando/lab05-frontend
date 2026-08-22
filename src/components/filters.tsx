@@ -8,7 +8,7 @@ import { ListFilter } from "lucide-react";
 
 export default function TransactionFilter() {
   return (
-    <div className="p-6 my-5 rounded-lg  font-sans border border-[#293142] bg-[#11192C] text-[#DAE2FD] shadow-sm">
+    <div className="p-6 rounded-lg  font-sans border border-[#293142] bg-[#11192C] text-[#DAE2FD] shadow-sm">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] gap-6">
         <Select
           label="período"

@@ -4,8 +4,8 @@ import { Button } from "@/src/components/buttons";
 import Filters from "../../../components/filters";
 import { ModalBase } from "@/src/components/modal";
 import { useState } from "react";
-import ExportCsv from "@/src/components/export-csv";
 import { TransactionsStats } from "@/src/components/transactions-stats";
+import { TransactionsTable } from "@/src/components/TransactionsTable";
 
 
 
@@ -42,6 +42,7 @@ export default function TransactionsPage() {
 
    <Filters /> 
    <TransactionsStats />
+   <TransactionsTable />
    
     {isModalopen && (
       <ModalBase

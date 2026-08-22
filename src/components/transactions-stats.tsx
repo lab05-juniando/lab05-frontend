@@ -57,7 +57,7 @@ const DEFAULT_TRANSACTIONS: Transaction[] = [
 
 export function TransactionsStats() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[20]">
       <div className="bg-[#171F33] border border-[#3E484F]  tracking-wide p-5 rounded-xl">
         <p className="text-xs font-mono text-[#BDC8D1] uppercase">Entradas (mês)</p>
         <p className="text-2xl font-sans text-[#8ED5FF] mt-2">R$ 45.230,00</p>
