@@ -161,7 +161,7 @@ export default function Produtos() {
                 onClick={() => setModalAberto(false)}
                 className="text-xl text-[#8f9bad] transition hover:text-white"
               >
-                ×
+               
               </button>
             </div>
 
