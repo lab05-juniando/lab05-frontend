@@ -97,23 +97,23 @@ export default function Produtos() {
     }).format(valor);
   }
   return (
-    <div className="w-full px-2">
+    <div className="w-full px-5">
       {/* Botão para abrir o modal */}
       <div className="mb-5 mt-5 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div>
-            <h1 className="text-[20px] font-inter tracking-tight text-white">
+            <h1 className="text-2xl font-sans tracking-tight text-[#DAE2FD]">
               Lista de Compras
             </h1>
 
-            <p className="mt-1 max-w-md text-[13px] leading-5 text-slate-400">
+            <p className="mt-1 max-w-md text-base leading-5 text-[#BDC8D1]">
               Gerencie aquisições futuras e provisione saídas automáticas.
             </p>
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             {/* Informação */}
-            <div className="flex min-h-[46px] items-center gap-3 rounded-md border border-slate-700 bg-[#101a2d] px-3 py-2 text-xs text-slate-400">
-              <div className="flex h-4 w-4 items-center justify-center rounded-full border border-slate-500 text-[10px]">
+            <div className="flex min-h-[46px] items-center gap-3 font-sans rounded-md border border-slate-700 bg-[#101a2d] px-3 py-2 text-base text-[#A7B6CC]">
+              <div className="flex h-4 w-4 items-center justify-center rounded-full border border-[#B9C8DE] text-base">
                 i
               </div>
 
@@ -128,9 +128,9 @@ export default function Produtos() {
             <button
               type="button"
               onClick={() => setModalAberto(true)}
-              className="flex min-h-[46px] items-center justify-center gap-3 rounded-md bg-[#28b6ef] px-5 text-sm font-medium text-[#07111f] transition hover:bg-[#4bc3f2]"
+              className="flex min-h-[46px] items-center justify-center gap-3  rounded-md bg-[#38BDF8] px-5 text-sm font-semibold text-[#004965] transition hover:bg-[#4bc3f2]"
             >
-              <span className="text-lg leading-none">+</span>
+              <span className="text-sm leading-none">+</span>
               <span>
                 Novo
                 <br className="sm:hidden" /> Produto
@@ -167,7 +167,7 @@ export default function Produtos() {
 
             {/* Produto */}
             <div className="mb-4">
-              <label className="mb-2 block text-sm  font-mono text-[#cbd3e1]">
+              <label className="mb-2 block text-base font-mono text-[#BDC8D1]">
                 Produto
               </label>
 
@@ -176,7 +176,7 @@ export default function Produtos() {
                 value={produto}
                 onChange={(e) => setProduto(e.target.value)}
                 placeholder="produto do produto"
-                className="w-full rounded-md border border-[#2f3a4f] bg-[#182236] px-3 py-2.5 text-sm text-white outline-none placeholder:text-[#687386] focus:border-blue-500"
+                className="w-full rounded-md border border-[#2f3a4f] bg-[#1a2336] px-3 py-2.5 text-sm text-white outline-none placeholder:text-[#687386] focus:border-blue-500"
               />
             </div>
 
@@ -191,7 +191,7 @@ export default function Produtos() {
                 value={valor}
                 onChange={(e) => setValor(e.target.value)}
                 placeholder="R$ 0,00"
-                className="w-full rounded-md border border-[#2f3a4f] bg-[#182236] px-3 py-2.5 text-sm text-white outline-none placeholder:text-[#687386] focus:border-blue-500"
+                className="w-full rounded-md border border-[#2f3a4f] bg-[#1a2336] px-3 py-2.5 text-sm text-white outline-none placeholder:text-[#687386] focus:border-blue-500"
               />
             </div>
 
@@ -206,7 +206,7 @@ export default function Produtos() {
                 onChange={(e) => setDescricao(e.target.value)}
                 placeholder="Descreva o produto..."
                 rows={4}
-                className="w-full resize-none rounded-md border border-[#2f3a4f] bg-[#182236] px-3 py-2.5 text-sm text-white outline-none placeholder:text-[#687386] focus:border-blue-500"
+                className="w-full resize-none rounded-md border border-[#2f3a4f] bg-[#1a2336] px-3 py-2.5 text-sm text-white outline-none placeholder:text-[#687386] focus:border-blue-500"
               />
             </div>
 
@@ -246,21 +246,21 @@ export default function Produtos() {
                 />
               </th>
 
-              <th className="px-4 text-left font-mono text-[10px] uppercase tracking-[1.5px] text-[#b8c0ce]">
+              <th className="px-4 text-left font-mono text-xs uppercase tracking-[1.5px] text-[#b8c0ce]">
                 Produto
               </th>
 
-              <th className="w-[138px] px-4 text-left font-mono text-[10px] uppercase tracking-[1.5px] text-[#b8c0ce]">
+              <th className="w-[138px] px-4 text-left font-mono text-xs uppercase tracking-[1.5px] text-[#b8c0ce]">
                 Valor
                 <br />
                 estimado
               </th>
 
-              <th className="px-4 text-left font-mono text-[10px] uppercase tracking-[1.5px] text-[#b8c0ce]">
+              <th className="px-4 text-left font-mono text-xs uppercase tracking-[1.5px] text-[#b8c0ce]">
                 Descrição
               </th>
 
-              <th className="w-[140px] px-5 text-left font-mono text-[10px] uppercase tracking-[1.5px] text-[#b8c0ce]">
+              <th className="w-[140px] px-5 text-left font-mono text-xs uppercase tracking-[1.5px] text-[#b8c0ce]">
                 Ações
               </th>
             </tr>
@@ -288,7 +288,7 @@ export default function Produtos() {
                     {/* Produto */}
                     <td className="px-3 py-5 align-middle">
                       <span
-                        className={`text-[12px] font-inter ${
+                        className={` font-inter  text-base${
                           produto.comprado
                             ? "text-slate-500 line-through"
                             : "text-slate-200"
@@ -301,7 +301,7 @@ export default function Produtos() {
                     {/* Valor */}
                     <td className="px-3 py-5 align-middle">
                       <span
-                        className={`font-mono text-[12px] ${
+                        className={`font-mono text-base ${
                           produto.comprado
                             ? "text-slate-500"
                             : "text-slate-200"
@@ -314,9 +314,9 @@ export default function Produtos() {
                     {/* Descrição */}
                     <td className="px-3 py-5 align-middle">
                       <span
-                        className={`text-[12px] leading-5 font-inter ${
+                        className={` leading-5 font-inter text-base ${
                           produto.comprado
-                            ? "text-slate-600"
+                            ? "text-[#BDC8D1]"
                             : "text-slate-400"
                         }`}
                       >
@@ -329,10 +329,10 @@ export default function Produtos() {
                       <button
                         type="button"
                         onClick={() => alternarCompra(produto.id)}
-                        className={`text-[11px] font-medium leading-4 transition font-inter ${
+                        className={`text-sm font-semibold leading-4 transition font-inter ${
                           produto.comprado
                             ? "text-emerald-400 hover:text-emerald-300"
-                            : "text-slate-300 hover:text-[#28b6ef]"
+                            : "text-[#B9C8DE] hover:text-[#28b6ef]"
                         }`}
                       >
                         {produto.comprado ? (
