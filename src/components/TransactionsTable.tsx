@@ -140,8 +140,8 @@ export function TransactionsTable() {
       {/* Rodapé / Paginação */}
       <div className="flex justify-between items-center font-sans px-6 py-4 border-t border-[#1e293b] text-xs text-slate-400">
         <p>Mostrando 1-10 de 156 transações</p>
-        <div className="flex items-center gap-1 text-[#DAE2FD">
-          <button className="p-1.5 rounded border border-[#2a3548] hover:bg-bg-[#182236]"><ChevronLeft className="w-4 h-4" /></button>
+        <div className="flex items-center gap-1 text-[#DAE2FD]">
+          <button className="p-1.5 rounded border border-[#2a3548] hover:bg-[#182236]"><ChevronLeft className="w-4 h-4" /></button>
           <button className="px-3 py-1 rounded bg-[#38bdf8] text-slate-950 font-bold">1</button>
           <button className="px-3 py-1 rounded border border-[#2a3548] hover:bg-[#182236]">2</button>
           <button className="px-3 py-1 rounded border border-[#2a3548] hover:bg-[#182236]">3</button>
@@ -151,3 +151,4 @@ export function TransactionsTable() {
     </div>
   );
 }
+/** */

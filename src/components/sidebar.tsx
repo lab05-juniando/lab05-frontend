@@ -34,7 +34,7 @@ export default function Sidebar() {
               href={item.href}
               className={`flex items-center gap-2.5 px-4.5 py-2 text-[12px] transition-colors ${
                 active
-                  ? "bg-[#1F2D42] text-[#8ED5FF] border-r-3 border-[#8ED5FF]-500"
+                  ? "bg-[#1F2D42] text-[#8ED5FF] border-r-2 border-[#8ED5FF]"
                   : "text-[#BDC8D1]"
               }`}
             >
@@ -63,3 +63,4 @@ export default function Sidebar() {
     </aside>
   );
 }
+/**/ 
