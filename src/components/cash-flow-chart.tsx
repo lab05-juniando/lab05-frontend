@@ -94,7 +94,13 @@ type ChartTooltipProps = {
 
 function ChartTooltip({ active, payload, label }: ChartTooltipProps) {
   if (!active || !payload || !payload.length) return null;
+
   const row = payload[0]?.payload;
+  if (!row) return null;
+
+  const entrada = row._entradaOriginal ?? 0;
+  const saida = row._saidaOriginal ?? 0;
+
   return (
     <div
       style={{
@@ -108,10 +114,10 @@ function ChartTooltip({ active, payload, label }: ChartTooltipProps) {
     >
       <div style={{ fontWeight: 600, marginBottom: 4 }}>{label}</div>
       <div style={{ color: COLORS.entradasFill }}>
-        Entradas: R$ {row._entradaOriginal}k
+        Entradas: R$ {entrada}k
       </div>
       <div style={{ color: COLORS.saidasFill }}>
-        Saídas: R$ {row._saidaOriginal}k
+        Saídas: R$ {saida}k
       </div>
     </div>
   );
@@ -221,3 +227,4 @@ export default function CashFlowChart() {
     </div>
   );
 }
+/**/
