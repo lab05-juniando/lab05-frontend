@@ -1,97 +1,146 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import Input from "@/src/components/input";
 import { Button } from "@/src/components/buttons";
-import { FaAddressCard } from "react-icons/fa6";
 import { Mail } from "lucide-react";
-import { NameField, PasswordFields, CnpjField } from "./password_confirmed";
+
+import { useForm } from "react-hook-form";
+import api from "@/src/config/api";
+
+import { PacmanLoader } from "react-spinners";
+
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { AxiosError } from "axios";
+
+interface IFormRegisterData {
+  company: {
+    name: string;
+    cnpj: string;
+  };
+  user: {
+    name: string;
+    email: string;
+    password: string;
+  };
+}
 
 export default function RegisterPage() {
-  const [email, setEmail] = useState("");
-  const [company, setCompany] = useState("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const [nameValid, setNameValid] = useState(false);
-  const [pwdValid, setPwdValid] = useState(false);
-  const [cnpjValid, setCnpjValid] = useState(false);
+  const router = useRouter();
 
-  const [formError, setFormError] = useState("");
+  const {
+    register,
+    handleSubmit,
+    // formState: { errors },
+  } = useForm<IFormRegisterData>({});
 
-  const handleNameValidity = useCallback(
-    (isValid: boolean) => setNameValid(isValid),
-    [],
-  );
-  const handlePwdValidity = useCallback(
-    (isValid: boolean) => setPwdValid(isValid),
-    [],
-  );
-  const handleCnpjValidity = useCallback(
-    (isValid: boolean) => setCnpjValid(isValid),
-    [],
-  );
+  const onSubmit = async (data: IFormRegisterData) => {
+    setIsLoading(true);
+    try {
+      await api.post("/api/users/register", {
+        ...data,
+        user: {
+          ...data.user,
+          role: "ADMIN",
+        },
+      });
+      toast.success("Sua conta foi registrada!");
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setFormError("");
+      setTimeout(() => {
+        router.push("/");
+      }, 2000);
+    } catch (error: unknown) {
+      const axiosError = error as AxiosError<{ message: string }>;
+      const responseMessage = axiosError.response?.data?.message;
+      let errorMessage = "Aconteceu um erro!";
 
-    if (!email || !company) {
-      setFormError("Todos os campos são obrigatórios.");
-      return;
+      if (responseMessage) {
+        try {
+          errorMessage =
+            JSON.parse(responseMessage)[0]?.message ?? responseMessage;
+        } catch {
+          errorMessage = responseMessage;
+        }
+      }
+
+      toast.error(errorMessage);
+    } finally {
+      setIsLoading(false);
     }
+  };
 
-    if (!nameValid || !pwdValid || !cnpjValid) {
-      setFormError(
-        "Verifique os campos de nome, senha e CNPJ — algum deles está inválido.",
-      );
-      return;
-    }
-
-    console.log("Formulário válido, enviando cadastro...");
+  if (isLoading) {
+    return (
+      <div className="flex flex-col w-full h-screen items-center justify-center">
+        <PacmanLoader
+          color="#fff"
+          size={32}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+        <h1 className="text-xs mt-4">Calma lá meu amigo, carregando...</h1>
+      </div>
+    );
   }
 
   return (
     <div className="flex items-center justify-center flex-col w-full h-screen">
       <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-3 mt-20 p-6 bg-[#101B36] rounded-lg shadow-md"
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col p-6 py-10 bg-[#101B36] rounded-lg shadow-md w-full max-w-xl"
       >
-        <h1 className="text-2xl font-inter text-center"> Corporate Finance</h1>
-        <h2 className="text-lg font-inter">Seja bem-vindo(a)!</h2>
-        <h2 className="text-md font-inter">
+        <h1 className="text-2xl font-bold font-inter text-center mb-4">
+          {" "}
+          LAB05 - FinacesFlow
+        </h1>
+        <h2 className="text-lg font-inter mt-2">Seja bem-vindo(a)!</h2>
+        <h2 className="text-xs font-inter mb-2">
           Deseja Registrar sua Empresa Conosco? Comece aqui!
         </h2>
+        <div className="gap-3 flex flex-col">
+          <Input
+            label="Nome"
+            placeholder="Nome do usuário"
+            required
+            {...register("user.name")}
+          />
+          <Input
+            label="Email"
+            type="email"
+            required
+            icon={<Mail className="text-slate-400 shrink-0" />}
+            placeholder="Digite seu email"
+            {...register("user.email")}
+          />
+          <Input
+            label="Senha"
+            placeholder="Digite sua senha"
+            required
+            type="password"
+            {...register("user.password")}
+          />
+        </div>
 
-        <NameField onValidityChange={handleNameValidity} />
-
-        <Input
-          text="Email"
-          type="email"
-          required
-          icon={<Mail className="text-slate-400 shrink-0" />}
-          placeholder="Digite seu email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <PasswordFields onValidityChange={handlePwdValidity} />
-
-        <h1 className="text-xl font-bold text-center ">Registre Sua Empresa</h1>
-
-        <Input
-          text="Nome da Empresa"
-          type="text"
-          required
-          icon={<FaAddressCard className="text-slate-400 shrink-0" />}
-          placeholder="Digite o nome da sua empresa"
-          value={company}
-          onChange={(e) => setCompany(e.target.value)}
-        />
-
-        <CnpjField onValidityChange={handleCnpjValidity} />
-
-        {formError && (
-          <span className="text-sm text-red-500 text-center">{formError}</span>
-        )}
+        <h1 className="text-xl font-bold text-center mt-4 mb-2">
+          Registre Sua Empresa
+        </h1>
+        <div className="flex flex-col gap-3 mb-4">
+          <Input
+            label="Nome"
+            placeholder="Nome da empresa"
+            required
+            {...register("company.name")}
+          />
+          <Input
+            label="CNPJ"
+            required
+            placeholder="CNPJ da empresa"
+            {...register("company.cnpj")}
+          />
+        </div>
 
         <Button
           colorsParam="light"

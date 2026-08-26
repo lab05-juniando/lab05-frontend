@@ -4,37 +4,12 @@ import React, { useState, useEffect } from "react";
 import Input from "@/src/components/input";
 import { FaAddressCard } from "react-icons/fa6";
 import { LockKeyhole, User } from "lucide-react";
-
-function isPasswordStrong(pwd: string): boolean {
-  const hasMinLength = pwd.length >= 8;
-  const hasUpperCase = /[A-Z]/.test(pwd);
-  const hasLowerCase = /[a-z]/.test(pwd);
-  const hasNumber = /[0-9]/.test(pwd);
-  const hasSpecialChar = /[^A-Za-z0-9]/.test(pwd);
-  return (
-    hasMinLength && hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar
-  );
-}
-
-function isNameValid(name: string): boolean {
-  const parts = name.trim().split(/\s+/);
-  if (parts.length < 2) return false;
-  return parts.every((part) => part.length >= 3);
-}
-
-function isCnpjValid(cnpj: string): boolean {
-  const onlyDigits = cnpj.replace(/\D/g, "");
-  return onlyDigits.length === 14;
-}
-
-function formatCnpj(value: string): string {
-  const digits = value.replace(/\D/g, "").slice(0, 14);
-  return digits
-    .replace(/^(\d{2})(\d)/, "$1.$2")
-    .replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
-    .replace(/\.(\d{3})(\d)/, ".$1/$2")
-    .replace(/(\d{4})(\d)/, "$1-$2");
-}
+import {
+  formatCnpj,
+  isCnpjValid,
+  isNameValid,
+  isPasswordStrong,
+} from "@/src/utils/validations";
 
 // ---------- NOME ----------
 type NameFieldProps = {
@@ -53,7 +28,7 @@ export function NameField({ onValidityChange }: NameFieldProps) {
   return (
     <div>
       <Input
-        text="Nome Pessoal"
+        label="Nome Pessoal"
         type="text"
         required
         icon={<User className="text-slate-400 shrink-0" />}
@@ -97,7 +72,7 @@ export function PasswordFields({ onValidityChange }: PasswordFieldsProps) {
     <>
       <div>
         <Input
-          text="Senha"
+          label="Senha"
           type="password"
           required
           icon={<LockKeyhole className="text-slate-400 shrink-0" />}
@@ -119,7 +94,7 @@ export function PasswordFields({ onValidityChange }: PasswordFieldsProps) {
 
       <div>
         <Input
-          text="Confirmar Senha"
+          label="Confirmar Senha"
           type="password"
           required
           icon={<LockKeyhole className="text-slate-400 shrink-0" />}
@@ -157,7 +132,7 @@ export function CnpjField({ onValidityChange }: CnpjFieldProps) {
   return (
     <div>
       <Input
-        text="CNPJ"
+        label="CNPJ"
         type="text"
         required
         icon={<FaAddressCard className="text-slate-400 shrink-0" />}

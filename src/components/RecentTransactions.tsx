@@ -1,11 +1,4 @@
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faShoppingBag,
-  faMoneyBillWave,
-  faUtensils,
-  faCar,
-} from "@fortawesome/free-solid-svg-icons";
 
 type TransactionType = "entrada" | "saida";
 
@@ -16,7 +9,7 @@ export interface RecentTransaction {
   time: string;
   amount: number;
   type: TransactionType;
-  icon: typeof faShoppingBag;
+  // icon: typeof faShoppingBag;
 }
 
 interface RecentTransactionsProps {
@@ -31,7 +24,7 @@ const mockTransactions: RecentTransaction[] = [
     time: "14:30",
     amount: 249.9,
     type: "saida",
-    icon: faShoppingBag,
+    // icon: faShoppingBag,
   },
   {
     id: 2,
@@ -40,7 +33,7 @@ const mockTransactions: RecentTransaction[] = [
     time: "09:15",
     amount: 8500,
     type: "entrada",
-    icon: faMoneyBillWave,
+    // icon: faMoneyBillWave,
   },
   {
     id: 3,
@@ -49,7 +42,7 @@ const mockTransactions: RecentTransaction[] = [
     time: "20:00",
     amount: 124,
     type: "saida",
-    icon: faUtensils,
+    // icon: faUtensils,
   },
   {
     id: 4,
@@ -58,7 +51,7 @@ const mockTransactions: RecentTransaction[] = [
     time: "11:20",
     amount: 320,
     type: "saida",
-    icon: faCar,
+    // icon: faCar,
   },
 ];
 
@@ -74,11 +67,8 @@ export default function RecentTransactions({
 }: RecentTransactionsProps) {
   return (
     <section className="w-full rounded-xl border border-[#222A3D] bg-[#131B2E] p-5 shadow-sm">
-      
       <div className="mb-5 flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-[#F1F5F9]">
-          Recentes
-        </h2>
+        <h2 className="text-lg font-semibold text-[#F1F5F9]">Recentes</h2>
 
         <Link
           href="/dashboard/transactions"
@@ -88,7 +78,6 @@ export default function RecentTransactions({
         </Link>
       </div>
 
-     
       <div className="space-y-3">
         {transactions.map((transaction) => {
           const isIncome = transaction.type === "entrada";
@@ -98,7 +87,6 @@ export default function RecentTransactions({
               key={transaction.id}
               className="flex items-center gap-3 rounded-lg border border-[#222A3D] bg-[#131B2E] p-3 transition hover:bg-[#192238]"
             >
-             
               <div
                 className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-md ${
                   isIncome
@@ -106,13 +94,12 @@ export default function RecentTransactions({
                     : "bg-[#202B45] text-[#7DD3FC]"
                 }`}
               >
-                <FontAwesomeIcon
+                {/* <FontAwesomeIcon
                   icon={transaction.icon}
                   className="h-4 w-4"
-                />
+                /> */}
               </div>
 
-             
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-semibold text-[#F1F5F9]">
                   {transaction.title}
@@ -123,7 +110,6 @@ export default function RecentTransactions({
                 </p>
               </div>
 
-              
               <div className="text-right">
                 <div
                   className={`flex items-center justify-end gap-1 text-sm font-bold ${
@@ -145,5 +131,4 @@ export default function RecentTransactions({
     </section>
   );
 }
-/*...*/
-
+/*..*/
