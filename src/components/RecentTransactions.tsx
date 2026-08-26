@@ -71,7 +71,7 @@ export default function RecentTransactions({
         <h2 className="text-lg font-semibold text-[#F1F5F9]">Recentes</h2>
 
         <Link
-          href="/transactions"
+          href="/dashboard/transactions"
           className="text-xs font-semibold text-[#7DD3FC] underline underline-offset-2 transition hover:text-[#BAE6FD]"
         >
           Ver Tudo

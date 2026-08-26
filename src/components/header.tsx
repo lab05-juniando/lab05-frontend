@@ -11,7 +11,7 @@ export default function Header() {
         <input
           type="text"
           placeholder="Pesquisar transações..."
-          className="w-full text-[10px]"
+          className="w-full bg-transparent text-[10px] text-[#DAE2FD] outline-none placeholder:text-[#7C879D]"
         />
 
       </div>
@@ -36,3 +36,4 @@ export default function Header() {
     </header>
   );
 }
+/**/

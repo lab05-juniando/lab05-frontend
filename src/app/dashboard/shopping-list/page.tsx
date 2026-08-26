@@ -1,5 +1,9 @@
 import Product from "../../../components/product";
+import ShoppingCard from "../../../components/shoppingCard";
 
 export default function ShoppingListPage() {
-  return <Product />;
+  return <div>
+    <Product />,
+    <ShoppingCard />
+  </div>;
 }
