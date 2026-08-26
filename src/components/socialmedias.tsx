@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "./buttons";
 
 export default function SocialMedias() {
@@ -37,9 +38,9 @@ export default function SocialMedias() {
 
       <h3 className="text-sm text-white mt-4 text-center">
         Não tem uma conta?{" "}
-        <a href="#" className="text-blue-500 hover:underline">
+        <Link href="/register" className="text-blue-500 hover:underline">
           Cadastre-se
-        </a>
+        </Link>
       </h3>
     </div>
   );
